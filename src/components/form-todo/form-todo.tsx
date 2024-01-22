@@ -1,10 +1,15 @@
-import './input-todo.css'
+import './form-todo.css'
 import { useState } from 'react'
 
-function InputTodo() {
+function FormTodo() {
 
-    const [todos, setTodos] = useState([])
-    const [text, setText] = useState('')
+    type TodosType = {
+        id: string;
+        text: string;
+        completed: boolean;
+      };
+    const [todos, setTodos] = useState<TodosType[]>([])
+    const [text, setText] = useState<string>('')
   
     const addTodo = () => {
       if (text.trim().length) {
@@ -19,6 +24,10 @@ function InputTodo() {
       setText('')
       }
     }
+
+    const removeTodo = (todoId) => {
+      setTodos(todos.filter(todo => todo.id !== todoId))
+    }
   
     return (
         <div className="App">
@@ -31,7 +40,7 @@ function InputTodo() {
               todos.map(todo => <li key = {todo.id}>
                 <input type = 'checkbox' />
                 <span>{todo.text}</span>
-                <span className = 'delete'>&times;</span>
+                <span className = 'delete' onClick = {() => removeTodo({todo.id})}>&times;</span>
               </li>)
             }
           </ul>
@@ -39,5 +48,5 @@ function InputTodo() {
     )
   }
   
-  export default InputTodo
+  export default FormTodo
   

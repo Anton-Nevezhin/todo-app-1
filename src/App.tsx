@@ -1,11 +1,11 @@
 import './App.css'
-import InputTodo from './components/input-todo/input-todo'
+import FormTodo from './components/form-todo/form-todo'
 
 function App() {
 
   return (
       <div className="App">
-        <InputTodo />
+        <FormTodo />
       </div>
   )
 }
