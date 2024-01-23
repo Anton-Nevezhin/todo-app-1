@@ -1,9 +1,19 @@
+import TodoItem from '../todo-item/todo-item'
 
-const TodoList = () => {
+const TodoList = ({ todos, toggleTodoComplete, removeTodo }) => {
   return (
-    <div>
-      
-    </div>
+    <ul>
+      {
+        todos.map(todo => (
+          <TodoItem
+            key={todo.id}
+            toggleTodoComplete = {toggleTodoComplete}
+            removeTodo = {removeTodo}
+            {...todo}
+          />
+        ))
+      }
+    </ul>
   )
 }
 
